@@ -6,6 +6,6 @@
 #inlcude <karma/nal/nal.h>
 #include <karma/nal-example/example.h> // Example implement for karma
 
-ipaddr_
+ipaddr_example ie;
 ```
 

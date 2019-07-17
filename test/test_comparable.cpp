@@ -6,10 +6,18 @@ using namespace std;
 
 using namespace nal;
 
-struct ipaddr_impl: public ipaddr::ipaddr<ipaddr_impl> {
-    using ipaddr<ipaddr_impl>::ipaddr;
+struct ipaddr_impl: public ipaddr::comparable<ipaddr_impl> {
+    inline bool _cmp(const ipaddr_impl &d) const {
+        return 0;
+    }
 
+    inline bool _cmp(const ipaddr_impl::version &v) const {
+        return 0;
+    }
 
+    inline bool _cmp(const ipaddr_impl::type &t) const {
+        return 0;
+    }
 };
 
 int main() {

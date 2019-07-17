@@ -100,14 +100,36 @@ inline bool operator != (const typename comparable<I>::type &t, const comparable
     return ( p->_cmp(t) != 0 ) ? true : false;
 }
 
+template <typename T, typename E>
+struct excepted {
+    E except;
+}
+
 template <typename Impl>
 struct ipaddr: public base {
     // content
     using impl_type = typename Impl::impl_type;
     impl_type _v;
 
-    // constructor
-    ipaddr();
+    // constructor empty
+    ipaddr() {
+        Impl::init(_v);
+    }
+
+    // ipaddr ip = "192.168.1.1"
+    ipaddr(const char *c) {
+        Impl::init(_v, c);
+    }
+
+    // ipaddr ip = ip2;
+    ipaddr(const ipaddr &p) {
+        Impl::copy(this, *p);
+    }
+
+    // ipaddr ip = ipaddr::type::loopback
+    ipaddr(const type &t) {
+        Impl::init(_v, t);
+    }
 };
 
 };
